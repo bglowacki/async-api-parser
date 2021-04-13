@@ -1,6 +1,6 @@
 require "uuid"
 require "date"
-require "cgi"
+require_relative "url_params"
 
 class StringDataFormat
   def initialize(string)
@@ -8,7 +8,7 @@ class StringDataFormat
   end
 
   def to_s
-    return "url" if url_params?
+    return "url" if UrlParams.validate(@string)
     return "uuid" if UUID.validate(@string)
     return "date-time" if date_time?
     return "date" if date?
@@ -35,7 +35,5 @@ class StringDataFormat
   end
 
   def url_params?
-    params =  CGI::parse(@string)
-    !params.values.flatten.empty?
   end
 end
