@@ -9,6 +9,6 @@ class Description
   end
 
   def to_s
-    @name.capitalize.split("_").join(" ")
+    @name.capitalize.split(/[:_]/).join(" ")
   end
 end
