@@ -1,0 +1,54 @@
+---
+name: school:assigned_to:customer
+description: School has been assigned to a customer by super admin
+payload:
+  type: object
+  allOf:
+    - type: object
+      required:
+        - id
+        - name
+        - timestamp
+        - tracing
+        - version
+      properties:
+        id:
+          type: string
+          description: Event ID
+          format: uuid
+        name:
+          type: string
+          description: Event name
+
+        timestamp:
+          type: string
+          description: Timestamp when event happened
+          format: date
+
+        tracing:
+          type: object
+          description: Trace for events
+          required:
+            - trace_id
+            - parent_id
+          properties:
+            trace_id:
+              type: string
+              description: Trace ID
+
+            parent_id:
+              type: string
+              description: Span ID
+        version:
+          type: number
+          description: Version of the event, starts with 1
+          const: 1
+        data:
+          type: object
+          properties:
+            name:
+              description: School name
+              type: string
+            feature_package:
+              description: School feature package identifier
+              type: string
