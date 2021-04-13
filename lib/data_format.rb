@@ -1,6 +1,8 @@
 require_relative "integer_data_format"
 require_relative "string_data_format"
 require_relative "float_data_format"
+require_relative "unknown"
+
 
 class DataFormat
   def initialize(data_type, data)
@@ -8,20 +10,16 @@ class DataFormat
     @data = data
   end
 
-  def to_s
+  def detect
     case @data_type
     when "integer"
-      IntegerDataFormat.new(@data).format.to_s
+      IntegerDataFormat.new(@data).format
     when "float"
-      FloatDataFormat.new(@data).format.to_s
+      FloatDataFormat.new(@data).format
     when "string"
-      StringDataFormat.new(@data).format.to_s
+      StringDataFormat.new(@data).format
     else
-      "unknown"
+      Unknown.new
     end
-  end
-
-  def unknown?
-    to_s == "unknown"
   end
 end
