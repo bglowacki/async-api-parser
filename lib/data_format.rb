@@ -13,7 +13,7 @@ class DataFormat
     when "integer"
       IntegerDataFormat.new(@data).to_s
     when "float"
-      FloatDataFormat.new(@data).to_s
+      FloatDataFormat.new(@data).format.to_s
     when "string"
       StringDataFormat.new(@data).format.to_s
     else
