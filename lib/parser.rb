@@ -8,18 +8,13 @@ require_relative "data_format"
 require_relative "common_part"
 require_relative "property"
 require_relative "properties"
-require_relative "parsed_event"
+require "event"
 
 class Parser
   def parse(json)
     loaded_json = MultiJson.load(json)
-    properties_json = loaded_json.dup
-    properties_json.delete("name")
 
-    event = ParsedEvent.new(
-      properties: Properties.new(properties_json),
-      common: CommonPart.new(loaded_json)
-    ).to_h
+    event = Event.new(loaded_json).to_h
     puts event.to_yaml
   end
 end
