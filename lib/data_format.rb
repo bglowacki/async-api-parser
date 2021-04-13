@@ -17,7 +17,6 @@ class DataFormat
     when "float"
       FloatDataFormat.new(@data).format
     when "string"
-      pp "string"
       StringDataFormat.new(@data).format
     else
       Unknown.new

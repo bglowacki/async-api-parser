@@ -1,9 +1,9 @@
 require "date"
-require_relative "url_params_format"
-require_relative "date_format"
-require_relative "date_time_format"
-require_relative "uuid_format"
-require_relative "unknown"
+require "formats/url_params_format"
+require "formats/date_format"
+require "formats/date_time_format"
+require "formats/uuid_format"
+require "unknown"
 
 class StringDataFormat
   def initialize(string)
