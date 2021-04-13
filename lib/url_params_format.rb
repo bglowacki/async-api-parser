@@ -19,7 +19,7 @@ class UrlParamsFormat
     "url"
   end
 
-  def unknown?
-    false
+  def known?
+    true
   end
 end

@@ -18,7 +18,7 @@ class Int64Format
     "int64"
   end
 
-  def unknown?
-    false
+  def known?
+    true
   end
 end

@@ -18,7 +18,7 @@ class Int32Format
     "int32"
   end
 
-  def unknown?
-    false
+  def known?
+    true
   end
 end

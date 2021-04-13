@@ -17,8 +17,8 @@ class DateTimeFormat
     end
   end
 
-  def unknown?
-    false
+  def known?
+    true
   end
 
   def to_s

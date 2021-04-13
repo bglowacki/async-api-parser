@@ -1,6 +1,6 @@
 class Unknown
-  def unknown?
-    true
+  def known?
+    false
   end
 
   def to_s

@@ -16,7 +16,7 @@ class FloatFormat
     "float"
   end
 
-  def unknown?
-    false
+  def known?
+    true?
   end
 end

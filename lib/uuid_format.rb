@@ -14,8 +14,8 @@ class UUIDFormat
     UUID.validate(@value)
   end
 
-  def unknown?
-    false
+  def known?
+    true
   end
 
   def to_s
