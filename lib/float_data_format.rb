@@ -1,4 +1,4 @@
-require_relative "float_format"
+require "formats/float_format"
 
 class FloatDataFormat
   def initialize(float)

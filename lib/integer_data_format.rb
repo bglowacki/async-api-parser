@@ -1,4 +1,5 @@
-require_relative "int_32_format"
+require "formats/int_32_format"
+require "formats/int_64_format"
 
 class IntegerDataFormat
   def initialize(int)
