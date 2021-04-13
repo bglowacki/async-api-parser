@@ -15,7 +15,7 @@ class DataFormat
     when "float"
       FloatDataFormat.new(@data).to_s
     when "string"
-      StringDataFormat.new(@data).to_s
+      StringDataFormat.new(@data).format.to_s
     else
       "unknown"
     end
