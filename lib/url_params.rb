@@ -14,4 +14,12 @@ class UrlParams
     params =  CGI::parse(@value)
     !params.values.flatten.empty?
   end
+
+  def to_s
+    "url"
+  end
+
+  def unknown?
+    false
+  end
 end

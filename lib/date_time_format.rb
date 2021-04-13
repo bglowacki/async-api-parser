@@ -16,4 +16,12 @@ class DateTimeFormat
       false
     end
   end
+
+  def unknown?
+    false
+  end
+
+  def to_s
+    "date-time"
+  end
 end

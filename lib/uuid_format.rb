@@ -1,19 +1,17 @@
-class DateFormat
+require "uuid"
+
+class UUIDFormat
   def initialize(value)
     @value = value
   end
 
   def self.validate(value)
-    date = new(value)
-    date.valid?
+    uuid = new(value)
+    uuid.valid?
   end
 
   def valid?
-    begin
-      Date.parse(@value)
-    rescue Date::Error
-      false
-    end
+    UUID.validate(@value)
   end
 
   def unknown?
@@ -21,6 +19,7 @@ class DateFormat
   end
 
   def to_s
-    "date"
+    "uuid"
   end
+
 end
