@@ -1,3 +1,6 @@
+libdir = File.dirname(__FILE__)
+$LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
+
 require "yaml"
 require "multi_json"
 require_relative "data_type"
