@@ -1,6 +1,7 @@
 require "uuid"
 require "date"
 require_relative "url_params"
+require_relative "date_format"
 
 class StringDataFormat
   def initialize(string)
@@ -11,7 +12,7 @@ class StringDataFormat
     return "url" if UrlParams.validate(@string)
     return "uuid" if UUID.validate(@string)
     return "date-time" if date_time?
-    return "date" if date?
+    return "date" if DateFormat.validate(@string)
     "unknown"
   end
 
@@ -24,16 +25,5 @@ class StringDataFormat
     rescue Date::Error
       false
     end
-  end
-
-  def date?
-    begin
-      Date.parse(@string)
-    rescue Date::Error
-      false
-    end
-  end
-
-  def url_params?
   end
 end
