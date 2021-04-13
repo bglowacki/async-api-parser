@@ -5,9 +5,6 @@ require "yaml"
 require "multi_json"
 require_relative "data_type"
 require_relative "data_format"
-require_relative "common_part"
-require_relative "property"
-require_relative "properties"
 require "event"
 
 class Parser

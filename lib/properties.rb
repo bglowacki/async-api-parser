@@ -1,3 +1,5 @@
+require "property"
+
 class Properties
   def initialize(data)
     @data = data

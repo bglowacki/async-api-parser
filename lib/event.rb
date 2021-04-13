@@ -1,9 +1,11 @@
+require "properties"
+require "common_part"
+
 class Event
   def initialize(data)
     @properties = Properties.new(data)
     @common = CommonPart.new(data)
   end
-
 
   def payload
     @properties
