@@ -1,31 +1,44 @@
 require_relative "description"
 
-class Property
-  def initialize(name, data)
-    @name = name
+class PropertyData
+  attr_reader :data
+
+  def initialize(data)
     @data = data
   end
 
+  def type
+    DataType.new(@data)
+  end
+
+  def format
+    DataFormat.new(type.to_s, @data).detect
+  end
+
+  def keys
+    @data.keys || []
+  end
+end
+
+class Property
+  def initialize(name, data)
+    @name = name
+    @data = PropertyData.new(data)
+  end
+
+  def description
+    Description.from_name(@name)
+  end
+
   def to_h
-    data_type = DataType.new(@data)
-    data_format = DataFormat.new(data_type.to_s, @data).detect
-    description = Description.from_name(@name)
-
-    t = {}.tap do |h|
-      h["type"] = data_type.to_s
+    {}.tap do |h|
+      h["type"] = @data.type.to_s
       h["description"] = description.to_s
-      h["format"] = data_format.to_s if data_format.known?
+      h["format"] = @data.format.to_s if @data.format.known?
+      if @data.type.object?
+        h["properties"] = Properties.new(@data.data).to_h
+        h["require"] = @data.keys
+      end
     end
-
-    if @data.is_a?(Hash)
-      t.merge!(
-        {
-          'properties' => Properties.new(@data).to_h,
-          'required' => @data.keys
-        }
-      )
-    end
-
-    t
   end
 end

@@ -3,6 +3,10 @@ class DataType
     @type = type
   end
 
+  def object?
+    @type.is_a? Hash
+  end
+
   def to_s
     case @type
     when Hash
