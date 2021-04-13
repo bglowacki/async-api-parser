@@ -1,6 +1,6 @@
 require "cgi"
 
-class UrlParams
+class UrlParamsFormat
   def initialize(value)
     @value = value
   end
