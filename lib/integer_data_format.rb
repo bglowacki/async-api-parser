@@ -1,13 +1,15 @@
+require_relative "int_32_format"
+
 class IntegerDataFormat
   def initialize(int)
     @int = int
   end
 
-  def to_s
+  def format
     if @int.to_s.bytesize <= 32
-      "int32"
+      Int32Format.new(@int)
     else
-      "int64"
+      Int64Format.new(@int)
     end
   end
 end

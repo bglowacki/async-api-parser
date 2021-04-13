@@ -11,7 +11,7 @@ class DataFormat
   def to_s
     case @data_type
     when "integer"
-      IntegerDataFormat.new(@data).to_s
+      IntegerDataFormat.new(@data).format.to_s
     when "float"
       FloatDataFormat.new(@data).format.to_s
     when "string"
