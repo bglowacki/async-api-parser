@@ -1,4 +1,5 @@
-require_relative "description"
+require "description"
+require "required_fields"
 
 class PropertyData
   attr_reader :data
@@ -30,14 +31,19 @@ class Property
     Description.from_name(@name)
   end
 
+  def required_fields
+    RequiredFields.new(@data)
+  end
+
   def to_h
     {}.tap do |h|
       h["type"] = @data.type.to_s
       h["description"] = description.to_s
       h["format"] = @data.format.to_s if @data.format.known?
+
       if @data.type.object?
         h["properties"] = Properties.new(@data.data).to_h
-        h["require"] = @data.keys
+        h["require"] = required_fields.fields
       end
     end
   end
