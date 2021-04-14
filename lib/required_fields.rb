@@ -1,11 +1,14 @@
 class RequiredFields
-  attr_reader :fields
 
-  def initialize(fields)
-    @fields = fields
+  def initialize(data)
+    @data = data
   end
 
   def self.from_data(data)
-    new(data.keys)
+    new(data)
+  end
+
+  def fields
+    @data.select { |_key, value| !value.nil? }.keys
   end
 end
